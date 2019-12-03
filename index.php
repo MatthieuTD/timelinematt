@@ -1,4 +1,4 @@
-$<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Timeline</title>
@@ -21,18 +21,18 @@ $<!DOCTYPE html>
 		<nav>
 			<ul class="date-nav">
 
-				<li class="all">All</li>
-				<li class="1969">1969</li>
-				<li class="1975">1975</li>
-				<li class="1980">1980</li>
-				<li class="1985">1985</li>
-				<li class="1990">1990</li>
-				<li class="1995">1995</li>
-				<li class="2000">2000</li>
-				<li class="2005">2005</li>
-				<li class="2010">2010</li>
-				<li class="2015">2015</li>
-				<li class="2020">2020</li>
+				<li class="all"><a href="index.php?nav=1">All</a> </li>
+				<li class="1969"><a href="index.php?nav=2">1969</a></li>
+				<li class="1975"><a href="index.php?nav=3">1975</a></li>
+				<li class="1980"><a href="index.php?nav=4">1980</a></li>
+				<li class="1985"><a href="index.php?nav=5">1985</a></li>
+				<li class="1990"><a href="index.php?nav=6">1990</a></li>
+				<li class="1995"><a href="index.php?nav=7">1995</a></li>
+				<li class="2000"><a href="index.php?nav=8">2000</a></li>
+				<li class="2005"><a href="index.php?nav=9">2005</a></li>
+				<li class="2010"><a href="index.php?nav=10">2010</a></li>
+				<li class="2015"><a href="index.php?nav=11">2015</a></li>
+				<li class="2020"><a href="index.php?nav=12">2020</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -74,8 +74,77 @@ $<!DOCTYPE html>
 
 
 					<?php
-					$requete = $db->prepare('SELECT * FROM TM_date');
+					if (!isset($_GET['nav'])) {
+						$navvar = 1;
+					}else {
+						$navvar = $_GET['nav'];
+					}
+
+				switch ($navvar) {
+					case '1':
+						$requete = $db->prepare('SELECT * FROM TM_date');
 					$requete->execute();
+						break;
+					case '2':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '1969-00-00' AND '1975-00-00'");
+					$requete->execute();
+						break;
+					case '3':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '1975-00-00' AND '1980-00-00'");
+					$requete->execute();						break;
+					case '4':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '1980-00-00' AND '1985-00-00'");
+					$requete->execute();
+						break;
+					case '5':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '1985-00-00' AND '1990-00-00'");
+					$requete->execute();
+						break;
+					case '6':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '1990-00-00' AND '1995-00-00'");
+					$requete->execute();
+						break;
+					case '7':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '1995-00-00' AND '2000-00-00'");
+					$requete->execute();
+						break;
+					case '8':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '2000-00-00' AND '2005-00-00'");
+					$requete->execute();
+						break;
+					case '9':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '2005-00-00' AND '2010-00-00'");
+					$requete->execute();
+						break;
+					case '10':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '2010-00-00' AND '2015-00-00'");
+					$requete->execute();
+						break;
+					case '11':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '2015-00-00' AND '2020-00-00'");
+					$requete->execute();
+						break;
+					case '12':
+						$requete = $db->prepare(
+							"SELECT * FROM TM_date WHERE Date_name BETWEEN '2020-00-00' AND '2030-00-00'");
+					$requete->execute();
+						break;
+						
+					
+					
+				}
+
+					
 
 					while($donnee = $requete->fetch()){
 
@@ -137,7 +206,7 @@ $<!DOCTYPE html>
 					
 				</ul>
 			</aside>
-			<article>
+			<article class="affi-date">
 				<div>
 					<h2>Création de Linux</h2>
 					<ul>
@@ -153,9 +222,11 @@ $<!DOCTYPE html>
 							<figcaption>Le logo de Linux</figcaption>
 						</figure>
 					</div>
-					<p class="affi-date">
-					
+					<p>
+				
+En 1969, Ken Thompson qui travaillait alors pour les laboratoires Bell développa la première version d'un système d'exploitation mono-utilisateur sous le nom de New Ken's System. Il réalisa ce travail sur un mini-ordinateur PDP-7 (Programmed Data Processor) de marque DEC animé par General Comprehensive Operating System7 et rédigea le nouveau logiciel en langage d'assemblage. Le nom Unics fut suggéré par Brian Kernighan à la suite d'un jeu de mots « latin » avec Multics; « Multi- car Multics faisait la même chose de plusieurs façons alors qu'Unics faisait chaque chose d'une seule façon ». Ce nom fut par la suite contracté en Unix (pour être déposé finalement sous le nom UNIX par AT&T), à l'initiative de Brian Kernighan.
 
+			
 
 
 					</p>
@@ -173,13 +244,13 @@ $<!DOCTYPE html>
 
         fetch(url).then(function(response) {
           response.text().then(function(text) {
-            poemDisplay.textContent = text;
+            poemDisplay.innerHTML = text;
             console.log(text);
           });
         });
       };
 
-      
+      myFunction(5);
       
 
 

@@ -14,13 +14,39 @@ $requ = "SELECT * FROM TM_date WHERE Id_date = ".$_GET['id'];
 
 
 						while ($resu = $req->fetch()) {
+                            ?>
+                            <div>
+                              <h2><?php echo $resu['Title'] ; ?></h2>
+                    <ul>
+                        <li>web</li>
+                        <li>Informatique</li>
+                    </ul>
+                    <h3><?php echo $resu['Date_name'] ; ?></h3>
+                </div>
+                <div class="page-scroll">
+                    <div id="banniere">
+                        <figure>
+                            <img src="linux.png">
+                            <figcaption>Le logo de Linux</figcaption>
+                        </figure>
+                    </div>
+                    <p >
+                <?php echo $resu['Comments'] ; ?>
 
-							echo $resu['Title'] ;
-							echo "tt";
+
+                
+
+
+                    </p>  
+</div>
+
+                            <?php
+							
+							
 							
 
 						}
-echo "tt";
+
 
 
 ?>
